@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Amount to Coins</title>
+</head>
+<body>
+    <h1>Convert Amount to Coins</h1>
+
+    <div>
+        <label for="amountInput">Enter amount:</label>
+        <input type="number" id="amountInput" min="1">
+    </div>
+
+    <button onclick="convertToCoins()">Convert to Coins</button>
+
+    <div id="result"></div>
+
+    <script>
+        function convertToCoins() {
+            const amount = parseInt(document.getElementById("amountInput").value);
+            if (isNaN(amount) || amount <= 0) {
+                displayResult("Please enter a valid positive integer.");
+                return;
+            }
+
+            const coins = [25, 10, 5, 2, 1];
+            let remainingAmount = amount;
+            const resultCoins = [];
+
+            for (let coin of coins) {
+                while (remainingAmount >= coin) {
+                    resultCoins.push(coin);
+                    remainingAmount -= coin;
+                }
+            }
+
+            displayResult(resultCoins.join(', '));
+        }
+
+        function displayResult(result) {
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
