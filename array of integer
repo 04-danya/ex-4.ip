@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sum and Product</title>
+</head>
+<body>
+    <h1>Array Sum and Product</h1>
+
+    <div>
+        <label for="arrayInput">Enter array of integers (comma separated):</label>
+        <input type="text" id="arrayInput">
+        <button onclick="compute()">Compute</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function compute() {
+            const arrayInput = document.getElementById("arrayInput").value.trim();
+            const array = arrayInput.split(",").map(Number);
+
+            // Calculate sum
+            const sum = array.reduce((acc, num) => acc + num, 0);
+
+            // Calculate product
+            const product = array.reduce((acc, num) => acc * num, 1);
+
+            // Display results
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `<p>Sum: ${sum}</p><p>Product: ${product}</p>`;
+        }
+    </script>
+</body>
+</html>
