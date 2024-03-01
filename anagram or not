@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagram Checker</title>
+</head>
+<body>
+    <h1>Anagram Checker</h1>
+
+    <div>
+        <label for="string1Input">Enter first string:</label>
+        <input type="text" id="string1Input">
+    </div>
+
+    <div>
+        <label for="string2Input">Enter second string:</label>
+        <input type="text" id="string2Input">
+    </div>
+
+    <button onclick="checkAnagram()">Check Anagram</button>
+
+    <div id="result"></div>
+
+    <script>
+        function checkAnagram() {
+            const string1 = document.getElementById("string1Input").value.trim().toLowerCase();
+            const string2 = document.getElementById("string2Input").value.trim().toLowerCase();
+
+            // Check if strings have the same length
+            if (string1.length !== string2.length) {
+                displayResult("Not anagrams. Strings have different lengths.");
+                return;
+            }
+
+            // Sort characters in both strings and compare
+            const sortedString1 = string1.split('').sort().join('');
+            const sortedString2 = string2.split('').sort().join('');
+
+            if (sortedString1 === sortedString2) {
+                displayResult("Anagrams!");
+            } else {
+                displayResult("Not anagrams. Strings have different character compositions.");
+            }
+        }
+
+        function displayResult(message) {
+            document.getElementById("result").innerText = message;
+        }
+    </script>
+</body>
+</html>
