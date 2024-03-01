@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Display</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Display</h1>
+    <table id="carTable">
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+    </table>
+
+    <script>
+        class Car {
+            constructor(make, model, price) {
+                this.make = make;
+                this.model = model;
+                this.price = price;
+            }
+        }
+
+        // Create some car objects
+        let cars = [
+            new Car("Toyota", "Corolla", 15000),
+            new Car("Honda", "Civic", 18000),
+            new Car("Ford", "Focus", 17000),
+            new Car("Chevrolet", "Cruze", 16000)
+        ];
+
+        // Sort cars by price
+        cars.sort((a, b) => a.price - b.price);
+
+        // Display cars
+        const carTable = document.getElementById("carTable");
+        cars.forEach(car => {
+            const row = carTable.insertRow(-1);
+            const makeCell = row.insertCell(0);
+            const modelCell = row.insertCell(1);
+            const priceCell = row.insertCell(2);
+
+            makeCell.textContent = car.make;
+            modelCell.textContent = car.model;
+            priceCell.textContent = car.price;
+        });
+    </script>
+</body>
+</html>
